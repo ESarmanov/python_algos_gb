@@ -18,3 +18,47 @@
 
 После реализации структуры, проверьте ее работу на различных сценариях
 """
+
+"""Пример создания стека через ООП"""
+
+
+class StacksPlates:
+    def __init__(self):
+        self.elems = [[]]
+        self.max_size = 5 # размер каждой стопки одинаков
+
+    def is_empty(self):
+        return self.elems == [[]]
+
+    def push_in(self, el):
+        if len(self.elems[len(self.elems) - 1]) < self.max_size:
+            self.elems[len(self.elems) - 1].append(el)
+        else:
+            self.elems.append([])
+            self.elems[len(self.elems) - 1].append(el)
+
+    def pop_out(self):
+        if len(self.elems[len(self.elems) - 1]) != 0:
+            self.elems = self.elems[len(self.elems) - 1].pop()
+        else:
+            self.elems = self.elems.pop()
+
+    def show_stack(self):
+        n = 1
+        for i in self.elems:
+            tmp_el = ''.join(i)
+            print("стопка:",n, " | тарелок в стопке:", len(i), " | тарелки в стопке: >>> ", tmp_el)
+            n += 1
+
+
+SC_OBJ = StacksPlates()
+SC_OBJ.push_in('Plate1_')
+SC_OBJ.push_in('Plate2_')
+SC_OBJ.push_in('Plate3_')
+SC_OBJ.push_in('Plate4_')
+SC_OBJ.push_in('Plate5_')
+SC_OBJ.push_in('Plate6_')
+SC_OBJ.push_in('Plate7_')
+
+# показываем стопки
+SC_OBJ.show_stack()

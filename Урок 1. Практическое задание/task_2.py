@@ -17,3 +17,45 @@
 Алгоритмизатор должен развивать мышление, а это прежде всего практика.
 А без столкновения со сложностями его не развить.
 """
+
+import random
+
+
+#############################################################################################
+# сложность алгоритма O(N)
+def min_on(lst_obj):
+    min_el = lst_obj[0]
+    for i in range(len(lst_obj)):
+        tmp_el = lst_obj[i]
+        if tmp_el < min_el:
+            min_el = tmp_el
+
+    return min_el
+
+
+#############################################################################################
+# сложность алгоритма O(N^2)
+def min_on2(lst_obj):
+    min_el = lst_obj[0]
+    for k in (lst_obj):
+        min_idx = k
+        for l in range(len(lst_obj)):
+            tmp_el = lst_obj[l]
+            if tmp_el < min_idx:
+                min_idx = tmp_el
+    min_el = min_idx
+    return min_el
+
+
+#############################################################################################
+
+v_start = 0
+v_end = 10
+lst = []
+for j in (range(v_start, v_end)):
+    el = random.randint(-10, 10)
+    lst.append(el)
+
+print("сгенерированный список: ", lst)
+print("минимальное значение в списке, функция 'min_on' ", min_on(lst))
+print("минимальное значение в списке, функция 'min_on2' ", min_on2(lst))
