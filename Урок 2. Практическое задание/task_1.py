@@ -12,8 +12,8 @@
 
 Подсказка:
 Вариант исполнения:
-- условие рекурсивного вызова - введена операция +, -, *, /
-- условие завершения рекурсии - введена операция 0
+- условие рекурсивного вызова - введена операция +, -, *, / - ШАГ РЕКУРСИИ
+- условие завершения рекурсии - введена операция 0 - БАЗОВЫЙ СЛУЧАЙ
 
 Решите через рекурсию. Решение через цикл не принимается.
 Для оценки Отлично в этом блоке необходимо выполнить 5 заданий из 7
@@ -28,3 +28,78 @@
 Вы вместо трехзначного числа ввели строку (((. Исправьтесь
 Введите операцию (+, -, *, / или 0 для выхода):
 """
+
+
+def operation(result):
+    oper = str(
+        input(f"На текущий момент результат равен: {result}. Ждем следующего действия (+ - * /). 0 - для выхода>>>"))
+    if oper == "+":
+        try:
+            num = input_num()
+            result = def_sum(result, num)
+            operation(result)
+        except:
+            operation(result)
+
+    elif oper == "-":
+        try:
+            num = input_num()
+            result = def_sum(result, -num)
+            operation(result)
+        except:
+            operation(result)
+
+    elif oper == "*":
+        try:
+            num = input_num()
+            result = def_multiply(result, num)
+            operation(result)
+        except:
+            operation(result)
+
+    elif oper == "/":
+        try:
+            num = input_num()
+            if num != 0:
+                result = def_multiply(result, 1 / num)
+                operation(result)
+            else:
+                print("На 0 делить нельзя!")
+                operation(result)
+        except:
+            operation(result)
+
+    elif oper == "0":
+        print("------------------------------------------------")
+        return ()
+
+    else:
+        print(f"Поддерживаемые операции только: + - * /")
+        operation(result)
+
+    return result
+
+
+def input_num():
+    try:
+        num = int(input("a?>>>"))
+    except:
+        print("вводить надо число")
+        num = None
+    return num
+
+
+def def_sum(result, num):
+    result = result + num
+    return result
+
+
+def def_multiply(result, num):
+    result = result * num
+    return result
+
+
+result = 0
+#num = 0
+print("рекурсивный калькулятор. 0 - конец цикла")
+print(f"Конечный езультат составил {operation(result)}")

@@ -17,4 +17,20 @@
 
 Решите через рекурсию. Решение через цикл не принимается.
 Для оценки Отлично в этом блоке необходимо выполнить 5 заданий из 7
+
+Подсказка:
+Допускается исп-е встроенных ф-ций
+и допускается комб-е - цикл и рекурсия
 """
+
+def print_chr(v_begin, v_end, v_col_count):
+    result, ostatok = divmod(v_end - v_begin, v_col_count)
+    if result == 0:
+        print(*[str(symbol)+' - '+chr(symbol) for symbol in range(v_begin, v_begin + ostatok + 1)])
+    else:
+        print_chr(v_begin, v_begin + (result * v_col_count - 1), v_col_count)
+        print(*[str(symbol)+' - '+ chr(symbol) for symbol in range(v_end - ostatok, v_end + 1)])
+
+begin_chr, end_chr, col_count=32, 127, 10
+
+print_chr(begin_chr, end_chr, col_count)
