@@ -1,5 +1,5 @@
 """
-Задание 2.**
+Задание 2.
 
 Доработайте пример структуры "дерево",
 рассмотренный на уроке.
@@ -7,7 +7,7 @@
 Предложите варианты доработки и оптимизации
 (например, валидация значений узлов в соответствии с требованиями для бинарного дерева)
 
-Поработайте с доработанной структурой, позапускайте на реальных данных.
+Поработайте с доработанной структурой, позапускайте на реальных данных - на клиентском коде.
 """
 
 class BinaryTree:
@@ -27,12 +27,15 @@ class BinaryTree:
             # формируется новое поддерево
             self.left_child = BinaryTree(new_node)
         # если у узла есть левый потомок
-        else:
+#        else:
+        elif self.left_child is not None:
             # тогда вставляем новый узел
             tree_obj = BinaryTree(new_node)
             # и спускаем имеющегося потомка на один уровень ниже
             tree_obj.left_child = self.left_child
             self.left_child = tree_obj
+        else:
+            return "у узла уже есть потомки"
 
     # добавить правого потомка
     def insert_right(self, new_node):
@@ -42,12 +45,16 @@ class BinaryTree:
             # формируется новое поддерево
             self.right_child = BinaryTree(new_node)
         # если у узла есть правый потомок
-        else:
+#        else:
+        elif self.right_child is not None:
             # тогда вставляем новый узел
             tree_obj = BinaryTree(new_node)
             # и спускаем имеющегося потомка на один уровень ниже
             tree_obj.right_child = self.right_child
             self.right_child = tree_obj
+        else:
+            return "у узла уже есть потомки"
+
 
     # метод доступа к правому потомку
     def get_right_child(self):
@@ -69,7 +76,7 @@ class BinaryTree:
 r = BinaryTree(8)
 print(r.get_root_val())
 print(r.get_left_child())
-r.insert_left(4)
+r.insert_left(40)
 print(r.get_left_child())
 print(r.get_left_child().get_root_val())
 r.insert_right(12)
@@ -77,3 +84,4 @@ print(r.get_right_child())
 print(r.get_right_child().get_root_val())
 r.get_right_child().set_root_val(16)
 print(r.get_right_child().get_root_val())
+
